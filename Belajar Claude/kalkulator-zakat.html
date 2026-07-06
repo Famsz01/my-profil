@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kalkulator Zakat Penghasilan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 30px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #16a085;
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #16a085;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #hasil {
+      background-color: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Kalkulator Zakat Penghasilan</h1>
+
+  <label>Masukkan Penghasilan Bulanan (Rp):</label>
+<input type="number" id="penghasilan" placeholder="Contoh: 5000000" onkeypress="if(event.key === 'Enter') hitungZakat()">
+
+  <button onclick="hitungZakat()">Hitung Zakat</button>
+<p style="font-size: 13px; color: #666; text-align: center;">
+  *Asumsi nisab: setara Rp4.000.000/bulan (2.5% dari penghasilan di atas nisab)
+</p>
+
+  <p id="hasil"></p>
+
+  <script>
+    function hitungZakat() {
+  let penghasilan = document.getElementById("penghasilan").value;
+  let nisabBulanan = 4000000; // asumsi nisab setara Rp7.000.000/bulan
+
+  if (penghasilan === "" || penghasilan <= 0) {
+    document.getElementById("hasil").textContent = "Silakan masukkan penghasilan yang valid.";
+  } else if (penghasilan < nisabBulanan) {
+    document.getElementById("hasil").textContent = "Penghasilan belum mencapai nisab, belum wajib zakat.";
+  } else {
+    let zakat = penghasilan * 0.025;
+    let zakatFormatted = zakat.toLocaleString("id-ID");
+    document.getElementById("hasil").textContent = "Zakat yang wajib dibayar: Rp" + zakatFormatted;
+  }
+}
+  </script>
+</body>
+</html>

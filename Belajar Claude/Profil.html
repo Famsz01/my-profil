@@ -77,5 +77,22 @@ p {
     </div>
 
     <a href="https://wa.me/6285878854873">Hubungi Saya di WhatsApp</a>
+
+    <button onclick="sapa()">Klik Aku!</button>
+    <h3>Coba Kalkulator Mini</h3>
+<input type="number" id="angka1" placeholder="Masukkan angka">
+<button onclick="hitungKali()">Kalikan 2x</button>
+<p id="hasil"></p>
+
+<script>
+  function sapa() {
+  alert("Halo! Aku Azka, mahasiswa MBS yang lagi belajar coding. Terima kasih sudah mampir!");
+}
+function hitungKali() {
+  let angka = document.getElementById("angka1").value;
+  let hasil = angka * 2.5;
+  document.getElementById("hasil").textContent = "Hasilnya: " + hasil;
+}
+</script>
     </body>
     </html>
