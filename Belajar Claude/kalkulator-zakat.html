@@ -54,11 +54,15 @@
 </p>
 
   <p id="hasil"></p>
+  <h3>Riwayat Perhitungan</h3>
+<ul id="riwayat"></ul>
 
   <script>
-    function hitungZakat() {
+    let riwayat = [];
+
+function hitungZakat() {
   let penghasilan = document.getElementById("penghasilan").value;
-  let nisabBulanan = 4000000; // asumsi nisab setara Rp7.000.000/bulan
+  let nisabBulanan = 4000000; // Nisab bulanan dalam rupiah
 
   if (penghasilan === "" || penghasilan <= 0) {
     document.getElementById("hasil").textContent = "Silakan masukkan penghasilan yang valid.";
@@ -68,6 +72,20 @@
     let zakat = penghasilan * 0.025;
     let zakatFormatted = zakat.toLocaleString("id-ID");
     document.getElementById("hasil").textContent = "Zakat yang wajib dibayar: Rp" + zakatFormatted;
+
+    let penghasilanFormatted = Number(penghasilan).toLocaleString("id-ID");
+    riwayat.push("Penghasilan Rp" + penghasilanFormatted + " → Zakat Rp" + zakatFormatted);
+    tampilkanRiwayat();
+  }
+}
+
+function tampilkanRiwayat() {
+  let daftarRiwayat = document.getElementById("riwayat");
+  daftarRiwayat.innerHTML = "";
+  for (let i = 0; i < riwayat.length; i++) {
+    let item = document.createElement("li");
+    item.textContent = riwayat[i];
+    daftarRiwayat.appendChild(item);
   }
 }
   </script>
